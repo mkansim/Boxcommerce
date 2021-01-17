@@ -49,30 +49,21 @@ export class CurrencyHomeComponent implements OnInit {
       this.counterCurrencyInput = counterCurrency;
       this.amountInput = amount;
 
-      console.log(this.baseCurrencyInput != 'EUR');
-
-      if(baseCurrency != 'EUR'){
-        this.fxRate = this.getCrossRates(baseCurrency, counterCurrency, date)
-        this.convertedAmount =this.fxRate*amount;
-      }
-
-      else{
-        let value =  result.rates[counterCurrency]
+      let value =  result.rates[counterCurrency]
         this.fxRate = value
-        
         if(this.fxRate == undefined)
         {
           
           let value =  result.rates[baseCurrency]
           this.fxRate = value
-  
+          
           if(this.fxRate == undefined){
             alert('FX Rate for ' + baseCurrency + '/' + counterCurrency + ' not found');
             return;
           }
-        
+          this.convertedAmount =this.fxRate*amount; 
           this.convertReciprocal  = true;
-            
+                     
         }
         if(this.convertReciprocal)
         {
@@ -80,10 +71,8 @@ export class CurrencyHomeComponent implements OnInit {
         }
         else{
             this.convertedAmount =this.fxRate*amount;
-        }
-      }
-      
-      
+        
+      }            
       this.showResult = true;
     });
     this.convertReciprocal = false;
