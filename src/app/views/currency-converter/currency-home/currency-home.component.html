@@ -1,0 +1,41 @@
+<form class="currency-form">
+  <div>
+    <mat-form-field class="currency-full-width">
+      <mat-label>Amount</mat-label>
+      <textarea matInput placeholder="100" [(ngModel)]="amountInput" name="amountInput"></textarea>
+    </mat-form-field>
+  </div>
+    <div>
+      <mat-form-field class="currency-full-width">
+        <mat-label>Base Currency</mat-label>
+        <textarea matInput placeholder="EUR" [(ngModel)]="baseCurrencyInput" name="baseCurrencyInput"></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="currency-full-width">
+        <mat-label>Counter Currency</mat-label>
+        <textarea matInput placeholder="USD" [(ngModel)]="counterCurrencyInput" name="counterCurrencyInput">
+
+        </textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="currency-full-width">
+        <mat-label>Date</mat-label>
+        <textarea matInput placeholder="2021-01-15" [(ngModel)]="fxDate" name="fxDate"></textarea>
+      </mat-form-field>
+    </div>
+    
+      <div class="button-row">
+        <button mat-raised-button color="primary" (click)="convertTo(baseCurrencyInput,counterCurrencyInput,amountInput, fxDate)">
+          Convert</button>
+        
+    </div>
+    <div class="label-result">
+     <label  *ngIf="showResult">
+          {{amountInput | currency: baseCurrencyInput:'symbol-narrow'}} converts to {{convertedAmount | currency:counterCurrencyInput:'symbol-narrow'}}
+      </label>
+    </div>
+      
+  
+  </form>

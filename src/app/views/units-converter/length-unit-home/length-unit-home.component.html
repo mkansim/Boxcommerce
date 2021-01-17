@@ -1,0 +1,35 @@
+<form class="unit-form">
+  <div>
+    <mat-form-field class="unit-full-width">
+      <mat-label>Length</mat-label>
+      <textarea matInput placeholder="100" [(ngModel)]="lengthInput" name="lengthInput"></textarea>
+    </mat-form-field>
+  </div>
+    <div>
+      <mat-form-field class="unit-full-width">
+        <mat-label>Base Unit</mat-label>
+        <textarea matInput placeholder="yard, meter, inch" [(ngModel)]="baseLenghtInput" name="baseLenghtInput"></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="unit-full-width">
+        <mat-label>Convert To</mat-label>
+        <textarea matInput placeholder="yard, meter, inch" [(ngModel)]="counvertToLengthInput" name="counvertToLengthInput">
+
+        </textarea>
+      </mat-form-field>
+    </div>
+   
+      <div class="button-row">
+        <button mat-raised-button color="primary" (click)="convertTo(baseLenghtInput,counvertToLengthInput,lengthInput)">
+          Convert</button>
+        
+      </div>
+      <div class="label-result"> 
+        <label  *ngIf="showResult">
+          {{baseLenghtInput}} To {{counvertToLengthInput}} =  {{convertedLength | number:'1.0-2'}}
+        </label>
+      </div>
+    
+  
+  </form>
